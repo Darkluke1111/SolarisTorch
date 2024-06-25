@@ -3,3 +3,10 @@ version: 0.1 # the plugin's version
 author: Darkluke1111
 main: com.darkluke1111.SolarisTorch
 api-version: 1.21 # the version of the API you want to use, required starting with 1.13
+
+commands:
+  werstinkt:
+    description: Let's everyone know who stinks
+    usage: /<command>
+    permission:
+      solaristorch.whostinks
