@@ -29,9 +29,13 @@ public class BoosterManager implements Listener {
     public void start() {
         loadBoostersFromWorlds();
         Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, () -> {
-            boosters.forEach(booster -> {
-                plugin.spawner.spawnParticleCircleAt(booster.getLocation(),PARTICLE_COUNT,booster.getRadius());
-            });
+            for (World world : Bukkit.getWorlds()) {
+                List<Booster> worldList = boosters.get(world);
+                if(worldList == null) continue;
+                worldList.forEach(booster -> {
+                    plugin.spawner.spawnParticleCircleAt(booster.getLocation(), PARTICLE_COUNT, booster.getRadius());
+                });
+        }
         },0,20);
     }
 
