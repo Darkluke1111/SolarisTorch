@@ -15,15 +15,11 @@ import java.util.Random;
 
 
 public class SolarisTorch extends JavaPlugin {
-
-    public static final String NAMESPACE = "booster_wand";
     public static final String PLUGIN_NAME = "Solaris_Torch";
 
     public ParticleSpawner spawner;
     public BoosterWand boosterWand;
     public BoosterManager boosterManager;
-
-    NamespacedKey key = new NamespacedKey(this, NAMESPACE);
 
     @Override
     public void onEnable() {
@@ -39,10 +35,15 @@ public class SolarisTorch extends JavaPlugin {
     }
 
     private void registerRecipes() {
-        ShapedRecipe recipe = new ShapedRecipe(key, boosterWand.getBoosterWand());
+        ShapedRecipe recipe = new ShapedRecipe(new NamespacedKey(this, "booster_wand"), boosterWand.getBoosterWand());
         recipe.shape("XXX","XXX", "XXX");
         recipe.setIngredient('X', Material.OAK_PLANKS);
         Bukkit.addRecipe(recipe);
+
+        ShapedRecipe fortune_cookie_recipe = new ShapedRecipe(new NamespacedKey(this, "fortune_cookie"), CustomItemRegistry.INSTANCE.FORTUNE_COOKIE);
+        fortune_cookie_recipe.shape("XXX","XXX", "XXX");
+        fortune_cookie_recipe.setIngredient('X', Material.COOKIE);
+        Bukkit.addRecipe(fortune_cookie_recipe);
     }
 
     @Override
@@ -53,6 +54,7 @@ public class SolarisTorch extends JavaPlugin {
     void registerEvents() {
         getServer().getPluginManager().registerEvents(boosterWand,this);
         getServer().getPluginManager().registerEvents(boosterManager, this);
+        getServer().getPluginManager().registerEvents(new FortuneCookieListener(), this);
     }
 
     void registerCommands() {

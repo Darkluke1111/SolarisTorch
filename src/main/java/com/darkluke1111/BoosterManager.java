@@ -90,6 +90,7 @@ public class BoosterManager implements Listener {
         for (World world : Bukkit.getWorlds()) {
             PersistentDataContainer container = world.getPersistentDataContainer();
             List<Booster> worldList = container.get(BOOSTER_KEY, PersistentDataType.LIST.listTypeFrom(new BoosterTagType(plugin)));
+            worldList = worldList == null ? new ArrayList<>() : new ArrayList<>(worldList);
             boosters.put(world, worldList);
         }
     }
