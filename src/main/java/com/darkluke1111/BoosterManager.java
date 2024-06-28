@@ -65,6 +65,7 @@ public class BoosterManager implements Listener {
 
         List<Booster> worldList = boosters.get(world);
         worldList.add(b);
+        Bukkit.getLogger().warning(Integer.toString(worldList.size()));
         saveBoostersToWorlds();
     }
 

@@ -10,17 +10,21 @@ import org.bukkit.plugin.Plugin;
 
 public class BoosterTagType implements PersistentDataType<PersistentDataContainer, Booster> {
 
-    private Plugin plugin;
+    private final Plugin plugin;
 
-    private final NamespacedKey LOCATION_KEY = key("location");
-    private final NamespacedKey RADIUS_KEY = key("radius");
-    private final NamespacedKey POWER_KEY = key("power");
+    private final NamespacedKey LOCATION_KEY;
+    private final NamespacedKey RADIUS_KEY;
+    private final NamespacedKey POWER_KEY;
 
     private final LocationTagType LOCATION_TAG_TYPE;
 
     public BoosterTagType(Plugin plugin) {
         this.plugin = plugin;
         this.LOCATION_TAG_TYPE = new LocationTagType(plugin);
+
+        this.LOCATION_KEY = key("location");
+        this.RADIUS_KEY = key("radius");
+        this.POWER_KEY = key("power");
     }
 
     @Override

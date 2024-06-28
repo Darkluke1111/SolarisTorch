@@ -11,12 +11,16 @@ public class VectorTagType implements PersistentDataType<PersistentDataContainer
 
     private Plugin plugin;
 
-    private NamespacedKey X_KEY = key("x");
-    private NamespacedKey Y_KEY = key("y");
-    private NamespacedKey Z_KEY = key("z");
+    private NamespacedKey Y_KEY;
+    private NamespacedKey X_KEY;
+    private NamespacedKey Z_KEY;
 
     public VectorTagType(Plugin plugin) {
         this.plugin = plugin;
+
+        Y_KEY = key("y");
+        X_KEY = key("x");
+        Z_KEY = key("z");
     }
 
     @Override

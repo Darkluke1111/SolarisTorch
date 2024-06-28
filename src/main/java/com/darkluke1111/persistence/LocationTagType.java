@@ -13,9 +13,9 @@ import org.bukkit.util.Vector;
 public class LocationTagType implements PersistentDataType<PersistentDataContainer, Location> {
 private Plugin plugin;
 
-private final NamespacedKey WORLD_KEY = key("world");
-private final NamespacedKey POSITION_KEY = key("pos");
-private final NamespacedKey DIRECTION_KEY = key("dir");
+private final NamespacedKey WORLD_KEY;
+private final NamespacedKey POSITION_KEY;
+private final NamespacedKey DIRECTION_KEY;
 
 private final UUIDTagType UUID_TAG_TYPE;
 private final VectorTagType VECTOR_TAG_TYPE;
@@ -24,6 +24,10 @@ public LocationTagType(Plugin plugin) {
     this.plugin = plugin;
     this.UUID_TAG_TYPE = new UUIDTagType();
     this.VECTOR_TAG_TYPE = new VectorTagType(plugin);
+
+    WORLD_KEY = key("world");
+    POSITION_KEY = key("pos");
+    DIRECTION_KEY = key("dir");
 }
 
 @Override
