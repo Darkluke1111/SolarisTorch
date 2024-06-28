@@ -17,6 +17,7 @@ import java.util.Random;
 public class SolarisTorch extends JavaPlugin {
 
     public static final String NAMESPACE = "booster_wand";
+    public static final String PLUGIN_NAME = "Solaris_Torch";
 
     public ParticleSpawner spawner;
     public BoosterWand boosterWand;
