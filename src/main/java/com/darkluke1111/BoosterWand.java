@@ -1,8 +1,9 @@
 package com.darkluke1111;
 
-import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -10,13 +11,16 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.Objects;
-
 
 public class BoosterWand implements Listener {
     public static int CUSTOM_MARKER_INT = 1;
+    private final SolarisTorch plugin;
 
-    public static ItemStack getBoosterWand() {
+    public BoosterWand(SolarisTorch plugin) {
+        this.plugin = plugin;
+    }
+
+    public ItemStack getBoosterWand() {
         ItemStack item =  new ItemStack(Material.WOODEN_HOE,1);
         ItemMeta  meta = item.getItemMeta();
         meta.addEnchant(Enchantment.UNBREAKING,1,false);
@@ -27,7 +31,7 @@ public class BoosterWand implements Listener {
         return  item;
     }
 
-    public static boolean isWand(ItemStack stack) {
+    public boolean isWand(ItemStack stack) {
         return stack.getType() == Material.WOODEN_HOE && stack.getItemMeta().getCustomModelData() == CUSTOM_MARKER_INT;
     }
 
@@ -35,9 +39,12 @@ public class BoosterWand implements Listener {
     @EventHandler
     public void onItemUse(PlayerInteractEvent event) {
         if(event.getItem() == null) return;
-        if(!BoosterWand.isWand(event.getItem())) return;
+        if(!this.isWand(event.getItem())) return;
 
         event.setCancelled(true);
-        Bukkit.broadcastMessage(event.getPlayer() + " used the Booster Wand!");
+        Player p = event.getPlayer();
+        Location spawnLocation = p.getLocation().add(0,1,0).add(p.getLocation().getDirection());
+
+        plugin.boosterManager.addBooster(new Booster(p,spawnLocation,5.0,1.0));
     }
 }

@@ -8,7 +8,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.text.MessageFormat;
 import java.util.List;
 import java.util.Objects;
 import java.util.Random;
@@ -19,18 +18,27 @@ public class SolarisTorch extends JavaPlugin {
 
     public static final String NAMESPACE = "booster_wand";
 
+    public ParticleSpawner spawner;
+    public BoosterWand boosterWand;
+    public BoosterManager boosterManager;
+
     NamespacedKey key = new NamespacedKey(this, NAMESPACE);
 
     @Override
     public void onEnable() {
         Bukkit.getLogger().info(ChatColor.GREEN + "Enabled " + this.getName());
+        spawner = new ParticleSpawner(this);
+        boosterWand = new BoosterWand(this);
+        boosterManager = new BoosterManager(this);
         registerCommands();
         registerRecipes();
         registerEvents();
+
+        boosterManager.start();
     }
 
     private void registerRecipes() {
-        ShapedRecipe recipe = new ShapedRecipe(key, BoosterWand.getBoosterWand());
+        ShapedRecipe recipe = new ShapedRecipe(key, boosterWand.getBoosterWand());
         recipe.shape("XXX","XXX", "XXX");
         recipe.setIngredient('X', Material.OAK_PLANKS);
         Bukkit.addRecipe(recipe);
@@ -42,7 +50,8 @@ public class SolarisTorch extends JavaPlugin {
     }
 
     void registerEvents() {
-        getServer().getPluginManager().registerEvents(new BoosterWand(),this);
+        getServer().getPluginManager().registerEvents(boosterWand,this);
+        getServer().getPluginManager().registerEvents(boosterManager, this);
     }
 
     void registerCommands() {
