@@ -2,13 +2,11 @@ package com.darkluke1111;
 
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.entity.Item;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.List;
 import java.util.function.Consumer;
-import java.util.function.Function;
 
 public class ItemBuilder {
     private ItemStack item;

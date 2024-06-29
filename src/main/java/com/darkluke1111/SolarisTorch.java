@@ -35,7 +35,7 @@ public class SolarisTorch extends JavaPlugin {
     }
 
     private void registerRecipes() {
-        ShapedRecipe recipe = new ShapedRecipe(new NamespacedKey(this, "booster_wand"), boosterWand.getBoosterWand());
+        ShapedRecipe recipe = new ShapedRecipe(new NamespacedKey(this, "booster_wand"), CustomItemRegistry.INSTANCE.BOOSTER_WAND);
         recipe.shape("XXX","XXX", "XXX");
         recipe.setIngredient('X', Material.OAK_PLANKS);
         Bukkit.addRecipe(recipe);

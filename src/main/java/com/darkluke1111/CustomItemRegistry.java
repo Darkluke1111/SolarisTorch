@@ -2,18 +2,14 @@ package com.darkluke1111;
 
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.entity.Item;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class CustomItemRegistry {
 
     public final static CustomItemRegistry INSTANCE = new CustomItemRegistry();
-
 
     public final ItemStack FORTUNE_COOKIE;
     public final ItemStack BOOSTER_WAND;
