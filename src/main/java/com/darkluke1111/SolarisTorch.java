@@ -12,8 +12,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
-
-
 public class SolarisTorch extends JavaPlugin {
     public static final String PLUGIN_NAME = "Solaris_Torch";
 
@@ -55,6 +53,7 @@ public class SolarisTorch extends JavaPlugin {
         getServer().getPluginManager().registerEvents(boosterWand,this);
         getServer().getPluginManager().registerEvents(boosterManager, this);
         getServer().getPluginManager().registerEvents(new FortuneCookieListener(), this);
+        getServer().getPluginManager().registerEvents(new BoatYeeter(), this);
     }
 
     void registerCommands() {
