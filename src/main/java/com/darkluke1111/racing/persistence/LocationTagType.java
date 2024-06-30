@@ -1,4 +1,4 @@
-package com.darkluke1111.persistence;
+package com.darkluke1111.racing.persistence;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;

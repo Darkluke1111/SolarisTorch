@@ -1,5 +1,6 @@
-package com.darkluke1111;
+package com.darkluke1111.racing;
 
+import com.darkluke1111.SolarisTorch;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;

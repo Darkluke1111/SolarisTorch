@@ -1,6 +1,6 @@
-package com.darkluke1111.persistence;
+package com.darkluke1111.racing.persistence;
 
-import com.darkluke1111.Booster;
+import com.darkluke1111.racing.Booster;
 import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
 import org.bukkit.persistence.PersistentDataAdapterContext;

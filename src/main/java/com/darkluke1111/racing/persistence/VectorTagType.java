@@ -1,4 +1,4 @@
-package com.darkluke1111.persistence;
+package com.darkluke1111.racing.persistence;
 
 import org.bukkit.NamespacedKey;
 import org.bukkit.persistence.PersistentDataAdapterContext;

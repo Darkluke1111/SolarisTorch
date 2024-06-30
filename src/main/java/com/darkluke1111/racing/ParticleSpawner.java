@@ -1,17 +1,21 @@
-package com.darkluke1111;
+package com.darkluke1111.racing;
 
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.World;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.Vector;
 
 public class ParticleSpawner {
 
-    private JavaPlugin plugin;
+    private Plugin plugin;
+
+    public static ParticleSpawner instance;
 
     public  ParticleSpawner(JavaPlugin plugin) {
         this.plugin = plugin;
+        instance = this;
     }
 
     public void spawnParticleCircleAt(Location location, int particleCount, double radius) {
