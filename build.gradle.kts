@@ -4,6 +4,7 @@ import dev.s7a.gradle.minecraft.server.tasks.LaunchMinecraftServerTask.JarUrl
 plugins {
     java
     id("dev.s7a.gradle.minecraft.server") version "3.1.0"
+    id("io.github.patrick.remapper") version "1.4.0"
 }
 
 repositories {
@@ -14,22 +15,33 @@ repositories {
     //}
     maven (url = "https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
     maven (url = "https://oss.sonatype.org/content/groups/public/")
+    //mavenLocal()
 }
 
 dependencies {
     //compileOnly "io.papermc.paper:paper-api:1.19.4-R0.1-SNAPSHOT"
     compileOnly("org.spigotmc:spigot-api:1.21-R0.1-SNAPSHOT")
+    //compileOnly("org.spigotmc:spigot:1.21-R0.1-SNAPSHOT:remapped-mojang")
+
 }
 
 val archivesBaseName =  "solaris_torch"
 
 val javaVersion = JavaVersion.VERSION_17
 
-        java {
-            sourceCompatibility = javaVersion
-            targetCompatibility = javaVersion
-            toolchain.languageVersion = JavaLanguageVersion.of(javaVersion.toString())
-        }
+    java {
+        sourceCompatibility = javaVersion
+        targetCompatibility = javaVersion
+        toolchain.languageVersion = JavaLanguageVersion.of(javaVersion.toString())
+    }
+
+//tasks.remap {
+//    version.set("1.21")
+//}
+//
+//tasks.build {
+//    dependsOn(tasks.remap)
+//}
 
 task<LaunchMinecraftServerTask>("testPlugin") {
     dependsOn("build")
